@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/posiedon/Desktop/Coding/RL_Thermal/build/cmake_install.cmake",
+		"/home/posiedon/Desktop/Coding/RL_Thermal/build/_deps/ftxui-build/cmake_install.cmake",
+		"/home/posiedon/Desktop/Coding/RL_Thermal/build/_deps/ftxui-build/examples/cmake_install.cmake",
+		"/home/posiedon/Desktop/Coding/RL_Thermal/build/_deps/ftxui-build/doc/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
