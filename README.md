@@ -85,3 +85,54 @@ Ensure you have the following installed on your system:
 ```bash
 # Arch Linux / Omarchy
 sudo pacman -S gcc cmake libtorch python-pip pynvml stress
+```
+Installation & Build
+Clone the Repo:
+
+Bash
+git clone [https://github.com/your-username/Zephyrus-RL.git](https://github.com/your-username/Zephyrus-RL.git)
+cd Zephyrus-RL
+Build the C++ Daemon:
+
+Bash
+mkdir build && cd build
+cmake ..
+make -j$(nproc)
+Training the Brain
+Before running the daemon, the agent must "soak" the hardware to learn the thermal dynamics.
+
+Open a terminal and start a stress test: stress -c 16
+
+In another terminal, run the training script (requires sudo for hardware access):
+
+Bash
+cd src
+sudo python train.py
+The agent will train for approximately 10 minutes and export dummy_dqn.pt to the build/ folder.
+
+🖥 Usage
+Once the model is trained, launch the manager:
+
+Bash
+cd build
+sudo ./rog_rl_service
+Dashboard View
+RTX 4070 Box: Real-time GPU temp, power, and Optimus status.
+
+Core Ultra 7 Box: Real-time Intel CPU thermal status.
+
+RL Agent Output: Live visualization of the AI's intended power and fan adjustments.
+
+🛡 Hardware Safety Disclaimer
+WARNING: This software interacts directly with hardware power registers. While it includes a hardcoded C++ safety layer to prevent overheating, use this at your own risk. The authors are not responsible for any damage to your hardware.
+
+The safety layer enforces:
+
+CPU Limit: 15W - 80W
+
+GPU Limit: 35W - 115W (LOCKED via VBIOS on most G16 models)
+
+Emergency Throttle: Forced 100% fans if Temps > 90°C.
+
+🤝 Contributing
+Contributions are welcome! If you have ideas for better reward functions or support for other ROG laptops, feel free to open a PR.
