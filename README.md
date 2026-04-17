@@ -104,8 +104,10 @@ make -j$(nproc)
 Training the Brain
 Before running the daemon, the agent must "soak" the hardware to learn the thermal dynamics.
 
-Open a terminal and start a stress test: stress -c 16
-
+Open a terminal and start a stress test: 
+```Bash
+stress -c 16
+```
 In another terminal, run the training script (requires sudo for hardware access):
 
 ```Bash
