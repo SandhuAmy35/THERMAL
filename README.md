@@ -39,10 +39,11 @@ The system operates in a closed-loop feedback system:
 
 ### Prerequisites
 Ensure you have the following installed on your system:
+
 ```bash
 # Arch Linux / Omarchy
 sudo pacman -S gcc cmake libtorch python-pip pynvml stress# Zephyrus-RL: AI-Driven Thermal & Power Manager
-
+```
 **Zephyrus-RL** is a high-performance C++ daemon and Reinforcement Learning (RL) framework designed to dynamically optimize the thermals and power limits of the **ROG Zephyrus G16 (2024)**. 
 
 Instead of relying on static, manufacturer-defined fan curves, this project uses a **Proximal Policy Optimization (PPO)** agent to learn the specific thermal characteristics of the laptop's vapor chamber and adjust power limits (PL1/PL2) and fan speeds in real-time to maximize sustained performance.
@@ -89,15 +90,17 @@ sudo pacman -S gcc cmake libtorch python-pip pynvml stress
 Installation & Build
 Clone the Repo:
 
-Bash
-git clone [https://github.com/your-username/Zephyrus-RL.git](https://github.com/your-username/Zephyrus-RL.git)
+```Bash
+git clone [https://github.com/SandhuAmy35/Zephyrus-RL.git](https://github.com/SandhuAmy35/Zephyrus-RL.git)
 cd Zephyrus-RL
 Build the C++ Daemon:
+```
 
-Bash
+```Bash
 mkdir build && cd build
 cmake ..
 make -j$(nproc)
+```
 Training the Brain
 Before running the daemon, the agent must "soak" the hardware to learn the thermal dynamics.
 
@@ -105,17 +108,19 @@ Open a terminal and start a stress test: stress -c 16
 
 In another terminal, run the training script (requires sudo for hardware access):
 
-Bash
+```Bash
 cd src
 sudo python train.py
+```
 The agent will train for approximately 10 minutes and export dummy_dqn.pt to the build/ folder.
 
 🖥 Usage
 Once the model is trained, launch the manager:
 
-Bash
+```Bash
 cd build
 sudo ./rog_rl_service
+```
 Dashboard View
 RTX 4070 Box: Real-time GPU temp, power, and Optimus status.
 
